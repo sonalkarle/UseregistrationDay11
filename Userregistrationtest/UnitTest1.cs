@@ -13,7 +13,9 @@ namespace Userregistrationtest
             //Arrange 
             userRegistration = new Userregistrationclass();
         }
-
+        /// <summary>
+        /// UC1:Check wheather firstname is valid or not
+        /// </summary>
         [Test]
         public void Check_Wheather_Firstname_Is_ValidOrInvalid ()
         {
@@ -31,5 +33,25 @@ namespace Userregistrationtest
                 Assert.AreEqual("FirstName is not valid", exception.Message);
             }
         }
+        ///<summary>
+        ///UC2: check wheather the  last name is valid or not
+        ///</summary>
+        [Test]
+        public void Check_Wheather_LastName_Is_ValidOrInvalid ()
+        {
+            //Act
+            string[] pattpatternlastName = { "Karle", "Sonal" };
+            string actual = " ";
+            try
+            {
+                actual = userRegistration.LastName(pattpatternlastName);
+            }
+            catch(UserregistrationcustomException exception)
+            {
+                //Assert
+                Assert.AreEqual("Last name is not valid", exception.Message);
+            }
+        }
+
     }
 }

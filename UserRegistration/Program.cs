@@ -7,6 +7,8 @@ namespace UserRegistration
    public class Userregistrationclass
     {
         string firstName = "^[A-Z]{1}[a-z]{2,}$";
+        string lastName = "^[A-Z]{1}[a-z]{2,}$";
+        
     public string FirstName(string[] patternfirstname)
         {
             Regex regex = new Regex(firstName);
@@ -26,6 +28,24 @@ namespace UserRegistration
 
 
         }
+    public string LastName(string[] patternlastName)
+      {
+            Regex regex = new Regex(lastName);
+            var answer = regex.Match(patternlastName[1]);
+            try
+            {
+                if (!answer.Success)
+                {
+                    throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.LAST_NAME_MESSAGE, "Last name is not valid");
+                }
+                return "Last name is valid";
+            }
+            catch
+            {
+                throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.LAST_NAME_MESSAGE, "Last name is not valid");
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome user registration");

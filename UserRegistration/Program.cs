@@ -10,6 +10,7 @@ namespace UserRegistration
         string firstName = "^[A-Z]{1}[a-z]{2,}$";
         string lastName = "^[A-Z]{1}[a-z]{2,}$";
         string emailID = "^[0-9a-zA-Z]+([._+-]?[0-9a-zA-Z]+)*@[0-9A-Za-z]+.([c]{1}[o]{1}[m]{1})*([n]{1}[e]{1}[t]{1})*[,]*([.][a]{1}[u]{1})*([.][c]{1}[o]{1}[m]{1})*$";
+        string MobilePhone = "^[9]{1}[1]{1}[ ][0-9]{10}$";
 
         public string FirstName(string[] patternfirstname)
         {
@@ -68,6 +69,29 @@ namespace UserRegistration
             }
 
         }
+        /// <summary>
+        /// UC4: Validate the mobile number
+        /// </summary>
+        /// <param name="patternMobileNum"></param>
+        public string Mobilenumber(string[] patternMobileNum)
+        {
+            //Validate the phone number
+            Regex regex = new Regex(MobilePhone);
+            var answer = regex.Match(patternMobileNum[1]);
+            try
+            {
+                if (!answer.Success)
+                {
+                    throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.MOBILE_NUM_MESSAGE, "Mobile number is not valid");
+                }
+                return "Mobile number is valid";
+            }
+            catch
+            {
+                throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.MOBILE_NUM_MESSAGE, "Mobile number is not valid");
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome user registration");

@@ -15,7 +15,7 @@ namespace UserRegistration
             {
                 if (!answer.Success)
                 {
-                    throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.FIRST_NAME_MESSAGE, "First name is invalid");
+                    throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.FIRST_NAME_MESSAGE, "First name is not valid");
                 }
                 return "FirstName is Valid";
             }

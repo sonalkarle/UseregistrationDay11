@@ -110,5 +110,24 @@ namespace Userregistrationtest
             }
 
         }
+        ///<summary>
+        ///UC5: Check wheather password is valid or not
+        ///</summary>
+        public void Check_Wheather_Password_IsvalidOrNot()
+        {
+            string[] patternPassword = { "Kasf@123D", "SD@109YHG" };
+            string actual = " ";
+            try
+            {
+                //Act
+                actual = userRegistration.Password(patternPassword);
+            }
+            catch(UserregistrationcustomException exception)
+            {
+                //Assert 
+                Assert.AreEqual("Password is not valid ", exception.Message);
+            }
+        }
+
     }
 }

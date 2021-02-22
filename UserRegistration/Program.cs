@@ -11,7 +11,13 @@ namespace UserRegistration
         string lastName = "^[A-Z]{1}[a-z]{2,}$";
         string emailID = "^[0-9a-zA-Z]+([._+-]?[0-9a-zA-Z]+)*@[0-9A-Za-z]+.([c]{1}[o]{1}[m]{1})*([n]{1}[e]{1}[t]{1})*[,]*([.][a]{1}[u]{1})*([.][c]{1}[o]{1}[m]{1})*$";
         string MobilePhone = "^[9]{1}[1]{1}[ ][0-9]{10}$";
+        string password = "^[A-Z]{1}[a-zA-Z]{7,}([0-9]+)[@#$%^&*+-_]{1}$";
 
+        /// <summary>
+        /// UC1:Validat first name
+        /// </summary>
+        /// <param name="patternfirstname"></param>
+        /// <returns></returns>
         public string FirstName(string[] patternfirstname)
         {
             //Validate first name
@@ -32,6 +38,11 @@ namespace UserRegistration
 
 
         }
+        /// <summary>
+        /// UC2:Validate Last name
+        /// </summary>
+        /// <param name="patternlastName"></param>
+        /// <returns></returns>
         public string LastName(string[] patternlastName)
         {
             //Validate the last name
@@ -50,6 +61,11 @@ namespace UserRegistration
                 throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.LAST_NAME_MESSAGE, "Last name is not valid");
             }
         }
+        /// <summary>
+        /// UC3:Validate Email ID
+        /// </summary>
+        /// <param name="patternEmailID"></param>
+        /// <returns></returns>
         public string EmailId(string patternEmailID)
         {
             //Validate the email ID
@@ -89,6 +105,29 @@ namespace UserRegistration
             catch
             {
                 throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.MOBILE_NUM_MESSAGE, "Mobile number is not valid");
+            }
+        }
+        /// <summary>
+        /// UC5 :Validate the password
+        /// </summary>
+        /// <param name="patternPassword"></param>
+        public string Password(string[] patternPassword)
+        {
+            //Validate the password
+            Regex regex = new Regex(password);
+            var answer = regex.Match(patternPassword[1]);
+            try
+            {
+                if (!answer.Success)
+                {
+                    throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.PASSWORD_MESSAGE, "Password is not valid");
+                }
+                return "Password is valid";
+            }
+            catch
+            {
+                throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.PASSWORD_MESSAGE, "Password is not valid");
+
             }
         }
 

@@ -9,6 +9,7 @@ namespace UserRegistration
         //Pttern for  userregistration
         string firstName = "^[A-Z]{1}[a-z]{2,}$";
         string lastName = "^[A-Z]{1}[a-z]{2,}$";
+        string emailID = "^[0-9a-zA-Z]+([._+-]?[0-9a-zA-Z]+)*@[0-9A-Za-z]+.([c]{1}[o]{1}[m]{1})*([n]{1}[e]{1}[t]{1})*[,]*([.][a]{1}[u]{1})*([.][c]{1}[o]{1}[m]{1})*$";
         public string FirstName(string[] patternfirstname)
         {
             //Validate first name
@@ -46,6 +47,25 @@ namespace UserRegistration
             {
                 throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.LAST_NAME_MESSAGE, "Last name is not valid");
             }
+        }
+        public string EmailId(string patternEmailID)
+        {
+            //Validate the email ID
+            Regex regex = new Regex(emailID);
+            var answer = regex.Match(patternEmailID);
+            try
+            {
+                if (!answer.Success)
+                {
+                    throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.EMAIL_ID_MESSAGE, "Email id is not valid");
+                }
+                return "Email Id is valid";
+            }
+            catch
+            {
+                throw new UserregistrationcustomException(UserregistrationcustomException.ExceptionType.EMAIL_ID_MESSAGE, "Email id is not valid");
+            }
+
         }
         static void Main(string[] args)
         {

@@ -2,9 +2,21 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UserRegistration
+namespace UserRegistrationclass
 {
-    class UserregiException
+    public class UserregistrationcustomException : Exception
     {
+        ExceptionType type;
+
+        public enum ExceptionType
+        {
+            FIRST_NAME_MESSAGE,
+
+        }
+        public UserregistrationcustomException(ExceptionType type, string message) : base(message)
+        {
+            this.type = type;
+        }
     }
+
 }

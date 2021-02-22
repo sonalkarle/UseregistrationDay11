@@ -12,7 +12,8 @@ namespace UserRegistrationclass
         {
             FIRST_NAME_MESSAGE,
             LAST_NAME_MESSAGE,
-            EMAIL_ID_MESSAGE
+            EMAIL_ID_MESSAGE,
+            MOBILE_NUM_MESSAGE
         
 
         }

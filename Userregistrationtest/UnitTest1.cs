@@ -88,5 +88,23 @@ namespace Userregistrationtest
                 Assert.AreEqual("Email is not valid", exception.Message);
             }
         }
+        /// <summary>
+        /// UC4: Check wheather phone number is valid or not
+        /// </summary>
+        [Test]
+        public void Check_Wheather_Mobilenum_IsValidOrNot()
+        {
+            string[] patternMobileNum = { " 91 9702420754 ", "91 8806184089" };
+            string actual = " ";
+            try
+            {
+                actual = userRegistration.Mobilenumber(patternMobileNum);
+            }
+            catch (UserregistrationcustomException exception)
+            {
+                Assert.AreEqual("Phone number is not valid", exception.Message);
+            }
+
+        }
     }
 }

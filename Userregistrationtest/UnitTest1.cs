@@ -20,11 +20,12 @@ namespace Userregistrationtest
         [Test]
         public void Check_Wheather_Firstname_Is_ValidOrInvalid ()
         {
-            //Act
+            
             string[] patternfirstname = { "Sonal", "Karle" };
             string actual = " ";
             try
             {
+                //Act
                 actual = userRegistration.FirstName(patternfirstname);
             }
             catch (UserregistrationcustomException exception)
@@ -54,6 +55,10 @@ namespace Userregistrationtest
                 Assert.AreEqual("Last name is not valid", exception.Message);
             }
         }
+        /// <summary>
+        /// UC3: Check wheather the email id is valid or not
+        /// </summary>
+        
         [TestCase("abc@yahoo.com")]
         [TestCase("abc-100@yahoo.com,")]
         [TestCase("abc.100@yahoo.com")]
@@ -78,10 +83,11 @@ namespace Userregistrationtest
         [TestCase("abc@gmail.com.aa.au")]
         public void Check_Wheather_EmailId_isvalidOrNot(string samplemail)
         {
-            //Act
+            
             string actual = " ";
             try
             {
+                //Act
                 actual = userRegistration.EmailId(samplemail);
             }
             catch (UserregistrationcustomException exception)
@@ -110,5 +116,24 @@ namespace Userregistrationtest
             }
 
         }
+        ///<summary>
+        ///UC5: Check wheather password is valid or not
+        ///</summary>
+        public void Check_Wheather_Password_IsvalidOrNot()
+        {
+            string[] patternPassword = { "Kasf@123D", "SD@109YHG" };
+            string actual = " ";
+            try
+            {
+                //Act
+                actual = userRegistration.Password(patternPassword);
+            }
+            catch (UserregistrationcustomException exception)
+            {
+                //Assert 
+                Assert.AreEqual("Password is not valid ", exception.Message);
+            }
+        }
+
     }
 }

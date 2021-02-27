@@ -133,5 +133,5 @@ namespace UserRegistration
         {
             Console.WriteLine("Welcome user registration");
         }
-    }
+   }
 }
